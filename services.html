@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HVAC Services | Navarro's Heating & Cooling</title>
+  <meta
+    name="description"
+    content="Explore HVAC repair, installation, maintenance, heating, duct cleaning, and commercial services from Navarro's Heating & Cooling."
+  />
+
+  <style>
+    :root {
+      --blue: #0f4c81;
+      --dark-blue: #082d4d;
+      --light-blue: #edf6fc;
+      --orange: #f58220;
+      --white: #ffffff;
+      --text: #17212b;
+      --muted: #66727d;
+      --border: #dbe3e9;
+      --shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: white;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--dark-blue);
+      color: white;
+      font-size: 0.94rem;
+    }
+
+    .topbar-inner {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a {
+      color: white;
+      font-weight: 800;
+    }
+
+    header {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 18px rgba(0,0,0,.08);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--light-blue);
+      border: 3px solid var(--blue);
+      font-size: 34px;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--dark-blue);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      color: var(--orange);
+      font-size: .78rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 1.3px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      font-weight: 800;
+      color: var(--dark-blue);
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-weight: 900;
+      border: 2px solid transparent;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #d96b0f;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      color: white;
+      border-color: white;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(7,44,76,.86), rgba(7,44,76,.9)),
+        linear-gradient(130deg, #0f4c81, #3f91c9);
+      color: white;
+      padding: 90px 0;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #ffd34d;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      font-size: .88rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 1;
+      max-width: 850px;
+      margin: 0 auto 20px;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      color: #e9f3fa;
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .section-title span {
+      color: var(--orange);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: .86rem;
+    }
+
+    .section-title h2 {
+      color: var(--dark-blue);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-top: 8px;
+      line-height: 1.1;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .services {
+      background: #f8fbfd;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 20px;
+      transition: .2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--light-blue);
+      font-size: 32px;
+    }
+
+    .service-card h3 {
+      color: var(--dark-blue);
+      font-size: 1.35rem;
+      margin-bottom: 7px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .service-card ul {
+      padding-left: 20px;
+      color: var(--text);
+    }
+
+    .service-card li {
+      margin-bottom: 5px;
+    }
+
+    .why-us {
+      background: white;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .why-card {
+      background: var(--light-blue);
+      padding: 26px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .why-card .icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .why-card h3 {
+      color: var(--dark-blue);
+      margin-bottom: 7px;
+    }
+
+    .why-card p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .maintenance {
+      background: var(--dark-blue);
+      color: white;
+    }
+
+    .maintenance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .maintenance h2 {
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .maintenance p {
+      color: #d8e8f4;
+      margin-bottom: 20px;
+    }
+
+    .maintenance-list {
+      list-style: none;
+    }
+
+    .maintenance-list li {
+      margin-bottom: 11px;
+      font-weight: 700;
+    }
+
+    .maintenance-list li::before {
+      content: "✓";
+      color: #ffd34d;
+      margin-right: 9px;
+      font-weight: 900;
+    }
+
+    .maintenance-card {
+      background: white;
+      color: var(--text);
+      border-radius: 20px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .maintenance-card h3 {
+      color: var(--dark-blue);
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .maintenance-card p {
+      color: var(--muted);
+    }
+
+    .cta {
+      background: var(--orange);
+      color: white;
+    }
+
+    .cta-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .cta p {
+      max-width: 680px;
+      color: #fff8f2;
+      margin-top: 8px;
+    }
+
+    footer {
+      background: #061f35;
+      color: #cbd9e3;
+      padding: 30px 0;
+      text-align: center;
+      font-size: .92rem;
+    }
+
+    .mobile-call {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .services-grid,
+      .maintenance-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+        padding: 8px 0;
+      }
+
+      .services-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 68px 0;
+      }
+
+      .mobile-call {
+        display: block;
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--orange);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 900;
+        box-shadow: var(--shadow);
+        z-index: 200;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>Serving Las Vegas & surrounding areas</div>
+      <div>
+        English:
+        <a href="tel:7025383728">(702) 538-3728</a>
+        &nbsp; | &nbsp;
+        Español:
+        <a href="tel:7027627592">(702) 762-7592</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+        <div class="logo">🐧</div>
+
+        <div class="brand-text">
+          <strong>Navarro's Heating & Cooling</strong>
+          <span>Expert HVAC Services</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li>
+            <a href="index.html#contact" class="btn btn-primary">
+              Request Service
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="eyebrow">
+          Navarro's Heating & Cooling
+        </div>
+
+        <h1>
+          Heating & Cooling
+          <span>Services</span>
+        </h1>
+
+        <p>
+          From AC repairs and new installations to heating,
+          preventive maintenance, ductwork, and commercial HVAC,
+          we're here to keep your property comfortable.
+        </p>
+
+        <div class="hero-actions">
+          <a href="index.html#contact" class="btn btn-primary">
+            Request Service
+          </a>
+
+          <a href="tel:7025383728" class="btn btn-outline">
+            Call (702) 538-3728
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <span>What We Do</span>
+          <h2>Complete HVAC Services</h2>
+          <p>
+            Whether you're dealing with a no-cool call,
+            upgrading equipment, or trying to prevent breakdowns,
+            Navarro's can help.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card">
+            <div class="service-icon">❄️</div>
+
+            <div>
+              <h3>AC Repair</h3>
+
+              <p>
+                Troubleshooting and repair for air conditioning
+                systems that are not cooling properly.
+              </p>
+
+              <ul>
+                <li>No-cool diagnostics</li>
+                <li>Electrical troubleshooting</li>
+                <li>Airflow problems</li>
+                <li>Thermostat issues</li>
+                <li>Refrigerant system diagnosis</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🏠</div>
+
+            <div>
+              <h3>AC Installation</h3>
+
+              <p>
+                Replacement and installation options for homes
+                and light commercial properties.
+              </p>
+
+              <ul>
+                <li>System replacements</li>
+                <li>New installations</li>
+                <li>Heat pump systems</li>
+                <li>Mini-split systems</li>
+                <li>Equipment startup</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🔥</div>
+
+            <div>
+              <h3>Heating Services</h3>
+
+              <p>
+                Heating system repair and service to keep your
+                property comfortable during colder weather.
+              </p>
+
+              <ul>
+                <li>Heating diagnostics</li>
+                <li>Heat pump service</li>
+                <li>Thermostat problems</li>
+                <li>Electrical heating issues</li>
+                <li>Seasonal inspections</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🛠️</div>
+
+            <div>
+              <h3>HVAC Maintenance</h3>
+
+              <p>
+                Routine inspections and maintenance designed to
+                improve reliability and catch problems early.
+              </p>
+
+              <ul>
+                <li>Filter inspection</li>
+                <li>Electrical inspection</li>
+                <li>Condenser cleaning</li>
+                <li>Temperature checks</li>
+                <li>System performance checks</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⚡</div>
+
+            <div>
+              <h3>Emergency HVAC Repair</h3>
+
+              <p>
+                Fast troubleshooting when your heating or cooling
+                system suddenly stops operating.
+              </p>
+
+              <ul>
+                <li>System not turning on</li>
+                <li>No cooling</li>
+                <li>Electrical failures</li>
+                <li>Frozen evaporator coils</li>
+                <li>Airflow problems</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">💨</div>
+
+            <div>
+              <h3>Duct Cleaning & Airflow</h3>
+
+              <p>
+                Services focused on improving airflow and helping
+                your HVAC system distribute air properly.
+              </p>
+
+              <ul>
+                <li>Duct cleaning</li>
+                <li>Airflow inspections</li>
+                <li>Filter replacement</li>
+                <li>Return air evaluation</li>
+                <li>Supply air inspection</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🔧</div>
+
+            <div>
+              <h3>Residential HVAC</h3>
+
+              <p>
+                Heating and cooling service for homeowners,
+                landlords, and residential properties.
+              </p>
+
+              <ul>
+                <li>Single-family homes</li>
+                <li>Rental properties</li>
+                <li>Condos</li>
+                <li>Townhomes</li>
+                <li>Residential maintenance</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🏢</div>
+
+            <div>
+              <h3>Light Commercial HVAC</h3>
+
+              <p>
+                HVAC service for offices, stores, restaurants,
+                and other small commercial properties.
+              </p>
+
+              <ul>
+                <li>Package units</li>
+                <li>Rooftop equipment</li>
+                <li>Commercial diagnostics</li>
+                <li>Preventive maintenance</li>
+                <li>Light commercial repairs</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="why-us">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Why Navarro's</span>
+          <h2>Service Built Around Your Comfort</h2>
+        </div>
+
+        <div class="why-grid">
+
+          <div class="why-card">
+            <div class="icon">📞</div>
+            <h3>Easy Scheduling</h3>
+            <p>
+              Call or request service online when you need help.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="icon">🐧</div>
+            <h3>Local Service</h3>
+            <p>
+              Proudly serving customers throughout the Las Vegas area.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="icon">🧰</div>
+            <h3>Full HVAC Support</h3>
+            <p>
+              Repair, installation, maintenance, and troubleshooting.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="icon">🌎</div>
+            <h3>English & Español</h3>
+            <p>
+              Service and communication available in English and Spanish.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="maintenance">
+      <div class="container maintenance-grid">
+
+        <div>
+          <div class="eyebrow">
+            Preventive Maintenance
+          </div>
+
+          <h2>
+            Help Prevent Breakdowns Before They Happen
+          </h2>
+
+          <p>
+            Routine HVAC maintenance can help identify worn parts,
+            airflow restrictions, dirty equipment, and electrical
+            problems before they become expensive repairs.
+          </p>
+
+          <ul class="maintenance-list">
+            <li>Inspect filters and airflow</li>
+            <li>Inspect electrical components</li>
+            <li>Check system temperatures</li>
+            <li>Inspect outdoor equipment</li>
+            <li>Check overall system operation</li>
+          </ul>
+        </div>
+
+        <div class="maintenance-card">
+          <h3>Schedule Maintenance</h3>
+
+          <p>
+            Keep your system ready for Las Vegas heat.
+            Contact Navarro's Heating & Cooling to schedule
+            a maintenance visit.
+          </p>
+
+          <br>
+
+          <a href="index.html#contact" class="btn btn-primary">
+            Request Maintenance
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+
+        <div>
+          <h2>Not Sure What Service You Need?</h2>
+          <p>
+            Tell us what your HVAC system is doing and we'll help
+            determine the next step.
+          </p>
+        </div>
+
+        <a href="tel:7025383728" class="btn btn-outline">
+          Call Navarro's
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Navarro's Heating & Cooling. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="tel:7025383728" class="mobile-call">
+    📞 Call Navarro's
+  </a>
+
+</body>
+</html>
