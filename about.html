@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Navarro's Heating & Cooling</title>
+
+  <style>
+    :root {
+      --blue: #0f4c81;
+      --dark-blue: #082d4d;
+      --light-blue: #edf6fc;
+      --orange: #f58220;
+      --white: #ffffff;
+      --text: #17212b;
+      --muted: #66727d;
+      --border: #dbe3e9;
+      --shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: white;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--dark-blue);
+      color: white;
+      font-size: 0.94rem;
+    }
+
+    .topbar-inner {
+      min-height: 42px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a {
+      color: white;
+      font-weight: 800;
+    }
+
+    header {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 18px rgba(0,0,0,.08);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--light-blue);
+      border: 3px solid var(--blue);
+      font-size: 34px;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--dark-blue);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      color: var(--orange);
+      font-size: .78rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 1.3px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      font-weight: 800;
+      color: var(--dark-blue);
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-weight: 900;
+      border: 2px solid transparent;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #d96b0f;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border-color: white;
+      color: white;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(7,44,76,.86), rgba(7,44,76,.9)),
+        linear-gradient(130deg, #0f4c81, #3f91c9);
+      color: white;
+      padding: 90px 0;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #ffd34d;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      font-size: .88rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1;
+      max-width: 900px;
+      margin: 0 auto 20px;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #e9f3fa;
+      font-size: 1.1rem;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .visual {
+      min-height: 480px;
+      background: var(--light-blue);
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .penguin {
+      font-size: 170px;
+      filter: drop-shadow(0 15px 18px rgba(0,0,0,.12));
+    }
+
+    .snow {
+      position: absolute;
+      color: white;
+      opacity: .9;
+      font-size: 55px;
+    }
+
+    .snow1 {
+      left: 40px;
+      top: 35px;
+    }
+
+    .snow2 {
+      right: 45px;
+      top: 70px;
+    }
+
+    .snow3 {
+      right: 60px;
+      bottom: 55px;
+    }
+
+    .about-copy span {
+      color: var(--orange);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: .86rem;
+    }
+
+    .about-copy h2 {
+      color: var(--dark-blue);
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
+      line-height: 1.08;
+      margin: 10px 0 20px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .values {
+      background: #f8fbfd;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading span {
+      color: var(--orange);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: .86rem;
+    }
+
+    .section-heading h2 {
+      color: var(--dark-blue);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin-top: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .value-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+      transition: .2s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .value-card .icon {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .value-card h3 {
+      color: var(--dark-blue);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .value-card p {
+      color: var(--muted);
+    }
+
+    .why-section {
+      background: var(--dark-blue);
+      color: white;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .why-section h2 {
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .why-section p {
+      color: #d8e8f4;
+      margin-bottom: 18px;
+    }
+
+    .checklist {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .checklist li {
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      color: #ffd34d;
+      margin-right: 10px;
+    }
+
+    .why-card {
+      background: white;
+      color: var(--text);
+      border-radius: 20px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .why-card h3 {
+      color: var(--dark-blue);
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .why-card p {
+      color: var(--muted);
+    }
+
+    .cta {
+      background: var(--orange);
+      color: white;
+    }
+
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .cta p {
+      max-width: 690px;
+      color: #fff7ef;
+      margin-top: 8px;
+    }
+
+    footer {
+      background: #061f35;
+      color: #cad8e3;
+      padding: 30px 0;
+      text-align: center;
+      font-size: .92rem;
+    }
+
+    .mobile-call {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .about-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+        padding: 8px 0;
+      }
+
+      .hero {
+        padding: 68px 0;
+      }
+
+      .visual {
+        min-height: 340px;
+      }
+
+      .penguin {
+        font-size: 125px;
+      }
+
+      .mobile-call {
+        display: block;
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--orange);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 900;
+        box-shadow: var(--shadow);
+        z-index: 200;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>Serving Las Vegas & surrounding areas</div>
+
+      <div>
+        English:
+        <a href="tel:7025383728">(702) 538-3728</a>
+        &nbsp; | &nbsp;
+        Español:
+        <a href="tel:7027627592">(702) 762-7592</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+        <div class="logo">🐧</div>
+
+        <div class="brand-text">
+          <strong>Navarro's Heating & Cooling</strong>
+          <span>Expert HVAC Services</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li>
+            <a class="btn btn-primary" href="index.html#contact">
+              Request Service
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="eyebrow">
+          About Navarro's
+        </div>
+
+        <h1>
+          Local HVAC Service
+          <span>You Can Count On</span>
+        </h1>
+
+        <p>
+          Navarro's Heating & Cooling is focused on reliable service,
+          quality workmanship, and keeping homes and businesses
+          comfortable throughout the Las Vegas area.
+        </p>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container about-grid">
+
+        <div class="visual">
+          <span class="snow snow1">❄</span>
+          <span class="snow snow2">❄</span>
+          <span class="snow snow3">❄</span>
+          <div class="penguin">🐧</div>
+        </div>
+
+        <div class="about-copy">
+          <span>Who We Are</span>
+
+          <h2>
+            Heating & Cooling With a Local Touch
+          </h2>
+
+          <p>
+            Navarro's Heating & Cooling provides residential and
+            light commercial HVAC services for customers throughout
+            Las Vegas and surrounding areas.
+          </p>
+
+          <p>
+            From everyday maintenance to unexpected repairs and
+            full system replacements, our goal is to provide clear
+            communication and dependable service from start to finish.
+          </p>
+
+          <p>
+            We understand how important reliable air conditioning is
+            in the Las Vegas heat, which is why we focus on responsive
+            service and practical HVAC solutions.
+          </p>
+
+          <a href="services.html" class="btn btn-primary">
+            View Our Services
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="values">
+      <div class="container">
+
+        <div class="section-heading">
+          <span>Our Values</span>
+          <h2>What Navarro's Stands For</h2>
+          <p>
+            Our goal is to build long-term relationships with customers
+            by providing dependable service and straightforward communication.
+          </p>
+        </div>
+
+        <div class="values-grid">
+
+          <div class="value-card">
+            <div class="icon">🤝</div>
+            <h3>Dependable Service</h3>
+            <p>
+              We want customers to know they have someone they can call
+              when their HVAC system needs attention.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="icon">🔧</div>
+            <h3>Quality Work</h3>
+            <p>
+              We focus on proper troubleshooting, installation,
+              maintenance, and repair.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="icon">💬</div>
+            <h3>Clear Communication</h3>
+            <p>
+              We explain what we're seeing and help customers understand
+              the next steps for their system.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="why-section">
+      <div class="container why-grid">
+
+        <div>
+          <div class="eyebrow">
+            Why Choose Navarro's
+          </div>
+
+          <h2>
+            HVAC Service Built Around Your Comfort
+          </h2>
+
+          <p>
+            Whether it's the middle of summer or time for seasonal
+            maintenance, Navarro's Heating & Cooling is ready to help.
+          </p>
+
+          <ul class="checklist">
+            <li>Residential HVAC service</li>
+            <li>Light commercial HVAC service</li>
+            <li>Air conditioning repairs</li>
+            <li>Heating repairs and service</li>
+            <li>Preventive maintenance</li>
+            <li>System installation and replacement</li>
+            <li>English and Spanish communication</li>
+          </ul>
+        </div>
+
+        <div class="why-card">
+          <h3>Need HVAC Service?</h3>
+
+          <p>
+            If your air conditioner isn't cooling, your heater isn't
+            working, or you just want your system checked before the
+            next season, contact Navarro's.
+          </p>
+
+          <br>
+
+          <a href="index.html#contact" class="btn btn-primary">
+            Request Service
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+
+        <div>
+          <h2>Ready to Schedule Service?</h2>
+
+          <p>
+            Contact Navarro's Heating & Cooling for HVAC service
+            throughout the Las Vegas area.
+          </p>
+        </div>
+
+        <a href="tel:7025383728" class="btn btn-outline">
+          Call (702) 538-3728
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Navarro's Heating & Cooling. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="tel:7025383728" class="mobile-call">
+    📞 Call Navarro's
+  </a>
+
+</body>
+</html>
