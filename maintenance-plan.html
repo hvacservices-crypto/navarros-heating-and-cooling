@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Maintenance Plan | Navarro's Heating & Cooling</title>
+
+  <style>
+    :root {
+      --blue: #0f4c81;
+      --dark-blue: #082d4d;
+      --light-blue: #edf6fc;
+      --orange: #f58220;
+      --yellow: #ffd34d;
+      --white: #ffffff;
+      --text: #17212b;
+      --muted: #66727d;
+      --border: #dbe3e9;
+      --shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: white;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--dark-blue);
+      color: white;
+      font-size: 0.94rem;
+    }
+
+    .topbar-inner {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a {
+      color: white;
+      font-weight: 800;
+    }
+
+    header {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 18px rgba(0,0,0,.08);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--light-blue);
+      border: 3px solid var(--blue);
+      font-size: 34px;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--dark-blue);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      color: var(--orange);
+      font-size: .78rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 1.3px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      font-weight: 800;
+      color: var(--dark-blue);
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-weight: 900;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #d96b0f;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border-color: white;
+      color: white;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(7,44,76,.84), rgba(7,44,76,.9)),
+        linear-gradient(130deg, #0f4c81, #3f91c9);
+      color: white;
+      padding: 95px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--yellow);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      font-size: .88rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      color: #e9f3fa;
+      font-size: 1.1rem;
+      max-width: 680px;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .plan-card {
+      background: white;
+      color: var(--text);
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark-blue);
+      font-size: .8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .plan-card h2 {
+      color: var(--dark-blue);
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-size: 2.7rem;
+      color: var(--orange);
+      font-weight: 900;
+      margin: 10px 0;
+    }
+
+    .price small {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .plan-card p {
+      color: var(--muted);
+    }
+
+    .mini-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .mini-list li {
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: var(--dark-blue);
+    }
+
+    .mini-list li::before {
+      content: "✓";
+      color: var(--orange);
+      margin-right: 9px;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading span {
+      color: var(--orange);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: .86rem;
+    }
+
+    .section-heading h2 {
+      color: var(--dark-blue);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.1;
+      margin-top: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .benefits {
+      background: #f8fbfd;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .benefit-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+      transition: .2s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .benefit-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--light-blue);
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card h3 {
+      color: var(--dark-blue);
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+    }
+
+    .benefit-card p {
+      color: var(--muted);
+    }
+
+    .included {
+      background: white;
+    }
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .included-copy h2 {
+      color: var(--dark-blue);
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .included-copy p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--dark-blue);
+    }
+
+    .checklist li::before {
+      content: "✓";
+      color: var(--orange);
+      margin-right: 10px;
+      font-weight: 900;
+    }
+
+    .included-card {
+      background: var(--dark-blue);
+      color: white;
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .included-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+    }
+
+    .included-card p {
+      color: #d8e8f4;
+      margin-bottom: 20px;
+    }
+
+    .included-card ul {
+      list-style: none;
+    }
+
+    .included-card li {
+      margin-bottom: 10px;
+    }
+
+    .included-card li::before {
+      content: "•";
+      color: var(--yellow);
+      margin-right: 10px;
+      font-size: 1.3rem;
+    }
+
+    .how-it-works {
+      background: #f8fbfd;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .step {
+      text-align: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .step-number {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--orange);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 900;
+      margin: 0 auto 16px;
+    }
+
+    .step h3 {
+      color: var(--dark-blue);
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--muted);
+    }
+
+    .faq {
+      background: white;
+    }
+
+    .faq-list {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      background: white;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--dark-blue);
+    }
+
+    details p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .cta {
+      background: var(--orange);
+      color: white;
+    }
+
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin-top: 8px;
+      color: #fff7ef;
+    }
+
+    footer {
+      background: #061f35;
+      color: #cad8e3;
+      padding: 30px 0;
+      text-align: center;
+      font-size: .92rem;
+    }
+
+    .mobile-call {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero-grid,
+      .included-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+        padding: 8px 0;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+
+      .plan-card {
+        padding: 26px;
+      }
+
+      .mobile-call {
+        display: block;
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--orange);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 900;
+        box-shadow: var(--shadow);
+        z-index: 200;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>Serving Las Vegas & surrounding areas</div>
+
+      <div>
+        English:
+        <a href="tel:7025383728">(702) 538-3728</a>
+        &nbsp; | &nbsp;
+        Español:
+        <a href="tel:7027627592">(702) 762-7592</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+        <div class="logo">🐧</div>
+
+        <div class="brand-text">
+          <strong>Navarro's Heating & Cooling</strong>
+          <span>Expert HVAC Services</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="maintenance-plan.html">Maintenance Plan</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+
+          <li>
+            <a class="btn btn-primary" href="contact.html">
+              Request Service
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            Navarro's Home Comfort Plan
+          </div>
+
+          <h1>
+            Protect Your HVAC
+            <span>Before It Breaks.</span>
+          </h1>
+
+          <p>
+            Regular HVAC maintenance can help improve reliability,
+            catch problems early, and keep your heating and cooling
+            system ready for Las Vegas weather.
+          </p>
+
+          <div class="hero-actions">
+
+            <a href="#join" class="btn btn-primary">
+              Join the Plan
+            </a>
+
+            <a href="tel:7025383728" class="btn btn-outline">
+              Call (702) 538-3728
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="plan-card" id="join">
+
+          <div class="badge">
+            Home Comfort Plan
+          </div>
+
+          <h2>Annual HVAC Maintenance</h2>
+
+          <div class="price">
+            Coming Soon
+          </div>
+
+          <p>
+            Final pricing will be added before the website goes live.
+          </p>
+
+          <ul class="mini-list">
+            <li>2 seasonal maintenance visits</li>
+            <li>Priority scheduling</li>
+            <li>System performance checks</li>
+            <li>Member repair discounts</li>
+            <li>Maintenance reminders</li>
+          </ul>
+
+          <a href="contact.html" class="btn btn-primary">
+            I'm Interested
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="container">
+
+        <div class="section-heading">
+          <span>Member Benefits</span>
+
+          <h2>
+            More Than Just a Tune-Up
+          </h2>
+
+          <p>
+            The Navarro's Home Comfort Plan is designed to make routine
+            HVAC maintenance easier while giving members added benefits
+            throughout the year.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+
+          <div class="benefit-card">
+            <div class="benefit-icon">📅</div>
+
+            <h3>2 Seasonal Visits</h3>
+
+            <p>
+              One cooling-season maintenance visit and one heating-season
+              maintenance visit each year.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+
+            <h3>Priority Scheduling</h3>
+
+            <p>
+              Maintenance plan members receive priority scheduling when
+              service appointments are available.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">💰</div>
+
+            <h3>Repair Discounts</h3>
+
+            <p>
+              Members can receive special discounts on qualifying HVAC
+              repairs and services.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🧰</div>
+
+            <h3>System Inspections</h3>
+
+            <p>
+              Routine checks help identify worn components and developing
+              problems before they become major failures.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">❄️</div>
+
+            <h3>Better Reliability</h3>
+
+            <p>
+              Preventive maintenance helps prepare your cooling system
+              for heavy summer use.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">📞</div>
+
+            <h3>Maintenance Reminders</h3>
+
+            <p>
+              We'll help remind members when it is time to schedule
+              their next seasonal maintenance visit.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="included">
+      <div class="container included-grid">
+
+        <div class="included-copy">
+
+          <div class="eyebrow" style="color: var(--orange);">
+            What's Included
+          </div>
+
+          <h2>
+            A Full HVAC System Check
+          </h2>
+
+          <p>
+            During a maintenance visit, Navarro's can inspect the major
+            components that affect your system's operation, comfort,
+            and reliability.
+          </p>
+
+          <ul class="checklist">
+            <li>Inspect thermostat operation</li>
+            <li>Inspect filters and airflow</li>
+            <li>Check temperature split</li>
+            <li>Inspect electrical components</li>
+            <li>Check contactors and capacitors</li>
+            <li>Inspect blower operation</li>
+            <li>Inspect outdoor condenser</li>
+            <li>Clean condenser coil when applicable</li>
+            <li>Inspect refrigerant system operation</li>
+            <li>Check visible drain and condensate components</li>
+          </ul>
+
+        </div>
+
+        <div class="included-card">
+
+          <h3>Built for Las Vegas Homes</h3>
+
+          <p>
+            Cooling systems in Las Vegas can run hard for months at a time.
+            Regular inspections can help prepare your equipment for peak
+            summer temperatures.
+          </p>
+
+          <ul>
+            <li>Prepare the system before summer</li>
+            <li>Catch electrical problems early</li>
+            <li>Identify dirty coils and airflow restrictions</li>
+            <li>Check for abnormal system operation</li>
+            <li>Help reduce unexpected breakdowns</li>
+          </ul>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <div class="container">
+
+        <div class="section-heading">
+          <span>How It Works</span>
+
+          <h2>
+            Keeping Maintenance Simple
+          </h2>
+        </div>
+
+        <div class="steps-grid">
+
+          <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>Join the Plan</h3>
+
+            <p>
+              Contact Navarro's and enroll your home's HVAC system
+              in the maintenance program.
+            </p>
+
+          </div>
+
+          <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>Schedule Your Visits</h3>
+
+            <p>
+              We'll schedule seasonal maintenance before peak heating
+              and cooling periods.
+            </p>
+
+          </div>
+
+          <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>Stay Comfortable</h3>
+
+            <p>
+              Receive routine system checks and access to plan benefits
+              throughout your membership.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+
+        <div class="section-heading">
+          <span>Questions</span>
+
+          <h2>
+            Home Comfort Plan FAQ
+          </h2>
+        </div>
+
+        <div class="faq-list">
+
+          <details>
+            <summary>
+              How many maintenance visits are included?
+            </summary>
+
+            <p>
+              The current mockup includes two seasonal HVAC maintenance
+              visits per year. Final plan terms can be adjusted before launch.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Are repairs included?
+            </summary>
+
+            <p>
+              Repairs are not automatically included in the plan.
+              The plan can offer discounted repair pricing for members.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Are filters included?
+            </summary>
+
+            <p>
+              Filter inspection is included in this mockup. Whether filter
+              replacement is included can be decided when final pricing
+              and plan terms are created.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Can I join if my HVAC system is older?
+            </summary>
+
+            <p>
+              The plan can be offered for many existing systems,
+              although system condition may be documented during
+              the first maintenance visit.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              How much does the plan cost?
+            </summary>
+
+            <p>
+              Pricing has not been finalized yet. The website currently
+              shows "Coming Soon" so Navarro's can choose the final price
+              before launch.
+            </p>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+
+        <div>
+
+          <h2>
+            Interested in the Home Comfort Plan?
+          </h2>
+
+          <p>
+            Contact Navarro's Heating & Cooling and ask about annual
+            HVAC maintenance for your home.
+          </p>
+
+        </div>
+
+        <a href="contact.html" class="btn btn-outline">
+          Contact Navarro's
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Navarro's Heating & Cooling. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="tel:7025383728" class="mobile-call">
+    📞 Call Navarro's
+  </a>
+
+</body>
+</html>
