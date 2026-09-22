@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HVAC Financing | Navarro's Heating & Cooling</title>
+
+  <style>
+    :root {
+      --blue: #0f4c81;
+      --dark-blue: #082d4d;
+      --light-blue: #edf6fc;
+      --orange: #f58220;
+      --yellow: #ffd34d;
+      --white: #ffffff;
+      --text: #17212b;
+      --muted: #66727d;
+      --border: #dbe3e9;
+      --shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: white;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--dark-blue);
+      color: white;
+      font-size: 0.94rem;
+    }
+
+    .topbar-inner {
+      min-height: 42px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a {
+      color: white;
+      font-weight: 800;
+    }
+
+    header {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 18px rgba(0,0,0,.08);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--light-blue);
+      border: 3px solid var(--blue);
+      font-size: 34px;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--dark-blue);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      color: var(--orange);
+      font-size: .78rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 1.3px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      font-weight: 800;
+      color: var(--dark-blue);
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-weight: 900;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #d96b0f;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      color: white;
+      border-color: white;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(7,44,76,.84), rgba(7,44,76,.9)),
+        linear-gradient(130deg, #0f4c81, #3f91c9);
+      color: white;
+      padding: 95px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--yellow);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      font-size: .88rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: #e9f3fa;
+      font-size: 1.1rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .finance-card {
+      background: white;
+      color: var(--text);
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .finance-card .badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark-blue);
+      font-size: .8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .finance-card h2 {
+      color: var(--dark-blue);
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .finance-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .finance-card ul {
+      list-style: none;
+      margin-bottom: 22px;
+    }
+
+    .finance-card li {
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: var(--dark-blue);
+    }
+
+    .finance-card li::before {
+      content: "✓";
+      color: var(--orange);
+      margin-right: 9px;
+      font-weight: 900;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading span {
+      color: var(--orange);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: .86rem;
+    }
+
+    .section-heading h2 {
+      color: var(--dark-blue);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.1;
+      margin-top: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .benefits {
+      background: #f8fbfd;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .benefit-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+      transition: .2s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .benefit-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--light-blue);
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card h3 {
+      color: var(--dark-blue);
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+    }
+
+    .benefit-card p {
+      color: var(--muted);
+    }
+
+    .process {
+      background: white;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .step {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .step-number {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--orange);
+      color: white;
+      font-weight: 900;
+      font-size: 1.3rem;
+      margin: 0 auto 16px;
+    }
+
+    .step h3 {
+      color: var(--dark-blue);
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--muted);
+    }
+
+    .what-can-be-financed {
+      background: var(--dark-blue);
+      color: white;
+    }
+
+    .finance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .finance-copy h2 {
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .finance-copy p {
+      color: #d8e8f4;
+      margin-bottom: 22px;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      margin-bottom: 11px;
+      font-weight: 700;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      color: var(--yellow);
+      margin-right: 10px;
+    }
+
+    .info-card {
+      background: white;
+      color: var(--text);
+      border-radius: 20px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-card h3 {
+      color: var(--dark-blue);
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .disclaimer {
+      background: #f8fbfd;
+      text-align: center;
+    }
+
+    .disclaimer-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .disclaimer-box h3 {
+      color: var(--dark-blue);
+      margin-bottom: 10px;
+    }
+
+    .disclaimer-box p {
+      color: var(--muted);
+    }
+
+    .cta {
+      background: var(--orange);
+      color: white;
+    }
+
+    .cta-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .cta p {
+      max-width: 700px;
+      color: #fff7ef;
+      margin-top: 8px;
+    }
+
+    footer {
+      background: #061f35;
+      color: #cad8e3;
+      padding: 30px 0;
+      text-align: center;
+      font-size: .92rem;
+    }
+
+    .mobile-call {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero-grid,
+      .finance-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+        padding: 8px 0;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+
+      .finance-card {
+        padding: 26px;
+      }
+
+      .mobile-call {
+        display: block;
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--orange);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 900;
+        box-shadow: var(--shadow);
+        z-index: 200;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>Serving Las Vegas & surrounding areas</div>
+
+      <div>
+        English:
+        <a href="tel:7025383728">(702) 538-3728</a>
+        &nbsp; | &nbsp;
+        Español:
+        <a href="tel:7027627592">(702) 762-7592</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+        <div class="logo">🐧</div>
+
+        <div class="brand-text">
+          <strong>Navarro's Heating & Cooling</strong>
+          <span>Expert HVAC Services</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="maintenance-plan.html">Maintenance Plan</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+
+          <li>
+            <a href="contact.html" class="btn btn-primary">
+              Request Service
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            HVAC Financing Options
+          </div>
+
+          <h1>
+            Comfort Now.
+            <span>Pay Over Time.</span>
+          </h1>
+
+          <p>
+            Replacing an HVAC system can be a major unexpected expense.
+            Navarro's Heating & Cooling can help customers explore
+            financing options for qualifying heating and cooling projects.
+          </p>
+
+          <div class="hero-actions">
+
+            <a href="#learn-more" class="btn btn-primary">
+              Learn About Financing
+            </a>
+
+            <a href="contact.html" class="btn btn-outline">
+              Contact Navarro's
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="finance-card">
+
+          <div class="badge">
+            Financing Available
+          </div>
+
+          <h2>
+            Flexible Payment Options
+          </h2>
+
+          <p>
+            Financing can make it easier to move forward with a needed
+            heating or cooling system replacement without paying the
+            full project cost at once.
+          </p>
+
+          <ul>
+            <li>Options for qualifying customers</li>
+            <li>Available for eligible HVAC projects</li>
+            <li>Flexible payment structures may be available</li>
+            <li>Simple application process</li>
+          </ul>
+
+          <a href="contact.html" class="btn btn-primary">
+            Ask About Financing
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="benefits" id="learn-more">
+      <div class="container">
+
+        <div class="section-heading">
+          <span>Why Finance?</span>
+
+          <h2>
+            Make a New HVAC System More Manageable
+          </h2>
+
+          <p>
+            Financing may help qualifying homeowners spread the cost
+            of a major HVAC project over time instead of paying the
+            entire amount upfront.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+
+          <div class="benefit-card">
+            <div class="benefit-icon">💳</div>
+
+            <h3>Flexible Payments</h3>
+
+            <p>
+              Eligible customers may be able to choose financing options
+              that divide project costs into scheduled payments.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🏠</div>
+
+            <h3>Replace When Needed</h3>
+
+            <p>
+              Financing can help homeowners move forward when an older
+              HVAC system needs replacement.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">❄️</div>
+
+            <h3>Restore Comfort</h3>
+
+            <p>
+              Avoid putting off a necessary heating or cooling project
+              simply because of the upfront cost.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+
+        <div class="section-heading">
+          <span>How It Works</span>
+
+          <h2>
+            A Simple Financing Process
+          </h2>
+        </div>
+
+        <div class="steps-grid">
+
+          <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>Schedule an Estimate</h3>
+
+            <p>
+              Contact Navarro's to discuss your HVAC system and the
+              work that may be needed.
+            </p>
+
+          </div>
+
+          <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>Review Your Options</h3>
+
+            <p>
+              After the project is estimated, ask about financing
+              options that may be available.
+            </p>
+
+          </div>
+
+          <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>Apply if Interested</h3>
+
+            <p>
+              Customers who choose financing can complete the lender's
+              application and review available terms.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="what-can-be-financed">
+      <div class="container finance-grid">
+
+        <div class="finance-copy">
+
+          <div class="eyebrow">
+            Eligible HVAC Projects
+          </div>
+
+          <h2>
+            Financing for Bigger Heating & Cooling Projects
+          </h2>
+
+          <p>
+            Exact financing eligibility will depend on the financing
+            provider and project, but financing may be useful for
+            larger HVAC purchases and replacements.
+          </p>
+
+          <ul class="checklist">
+            <li>Air conditioning replacements</li>
+            <li>Heating system replacements</li>
+            <li>Heat pump installations</li>
+            <li>Complete HVAC system installations</li>
+            <li>Mini-split installations</li>
+            <li>Qualifying equipment upgrades</li>
+          </ul>
+
+        </div>
+
+        <div class="info-card">
+
+          <h3>Need a Replacement Estimate?</h3>
+
+          <p>
+            Start by scheduling an HVAC estimate. Once the scope of work
+            is known, Navarro's can explain what financing options are
+            available for that project.
+          </p>
+
+          <a href="contact.html" class="btn btn-primary">
+            Request an Estimate
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="disclaimer">
+      <div class="container">
+
+        <div class="disclaimer-box">
+
+          <h3>Financing Information</h3>
+
+          <p>
+            Financing is subject to approval and lender terms.
+            Rates, payment amounts, eligibility requirements, and
+            available programs may vary. Final financing details will
+            be added to this website once Navarro's Heating & Cooling
+            selects a financing provider.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+
+        <div>
+          <h2>Thinking About a New HVAC System?</h2>
+
+          <p>
+            Contact Navarro's Heating & Cooling to schedule an estimate
+            and ask about available financing options.
+          </p>
+        </div>
+
+        <a href="contact.html" class="btn btn-outline">
+          Request an Estimate
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Navarro's Heating & Cooling. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="tel:7025383728" class="mobile-call">
+    📞 Call Navarro's
+  </a>
+
+</body>
+</html>
