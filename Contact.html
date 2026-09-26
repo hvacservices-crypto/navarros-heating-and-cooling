@@ -117,7 +117,7 @@
       display: flex;
       list-style: none;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
     }
 
     nav a {
@@ -495,8 +495,11 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
+          <li><a href="maintenance-plan.html">Maintenance Plan</a></li>
+          <li><a href="financing.html">Financing</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
+
           <li>
             <a class="btn btn-primary" href="#request">
               Request Service
@@ -513,17 +516,19 @@
     <section class="hero">
       <div class="container">
 
-        <div class="eyebrow">Contact Navarro's</div>
+        <div class="eyebrow">
+          Book HVAC Service
+        </div>
 
         <h1>
-          Let's Get Your HVAC
-          <span>Working Right</span>
+          Request Your
+          <span>Service Appointment</span>
         </h1>
 
         <p>
-          Need a repair, maintenance visit, new installation,
-          or help figuring out what is wrong with your system?
-          Contact Navarro's Heating & Cooling.
+          Choose the service you need, tell us what day works best,
+          and Navarro's Heating & Cooling will contact you to confirm
+          your appointment.
         </p>
 
       </div>
@@ -537,7 +542,8 @@
           <h2>Contact Information</h2>
 
           <p>
-            Call us directly or send a service request using the form.
+            Need immediate help? Call us directly. Otherwise,
+            submit an appointment request and we'll contact you.
           </p>
 
           <div class="contact-item">
@@ -575,10 +581,11 @@
 
         <form class="contact-form" onsubmit="handleSubmit(event)">
 
-          <h2>Request Service</h2>
+          <h2>Request an Appointment</h2>
 
           <p>
-            Tell us a little about your system and what problem you are having.
+            Fill out the information below and choose a preferred
+            appointment window.
           </p>
 
           <div class="form-grid">
@@ -613,24 +620,10 @@
             </div>
 
             <div class="form-group">
-              <label for="service">Service Needed</label>
+              <label for="property">Property Type *</label>
 
-              <select id="service">
-                <option>AC Repair</option>
-                <option>AC Installation</option>
-                <option>Heating Service</option>
-                <option>HVAC Maintenance</option>
-                <option>Emergency Repair</option>
-                <option>Duct Cleaning</option>
-                <option>Commercial HVAC</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="property">Property Type</label>
-
-              <select id="property">
+              <select id="property" required>
+                <option value="">Choose one</option>
                 <option>Residential</option>
                 <option>Commercial</option>
                 <option>Rental Property</option>
@@ -638,10 +631,60 @@
               </select>
             </div>
 
-            <div class="form-group">
-              <label for="time">Preferred Contact</label>
+            <div class="form-group full">
+              <label for="address">Service Address *</label>
 
-              <select id="time">
+              <input
+                type="text"
+                id="address"
+                placeholder="Street address, city, ZIP"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Needed *</label>
+
+              <select id="service" required>
+                <option value="">Choose a service</option>
+                <option>AC Repair</option>
+                <option>AC Installation</option>
+                <option>Heating Service</option>
+                <option>HVAC Maintenance</option>
+                <option>Emergency Repair</option>
+                <option>Duct Cleaning</option>
+                <option>Commercial HVAC</option>
+                <option>Estimate / Replacement</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="date">Preferred Date *</label>
+
+              <input
+                type="date"
+                id="date"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="appointmentTime">Preferred Time *</label>
+
+              <select id="appointmentTime" required>
+                <option value="">Choose a time window</option>
+                <option>8:00 AM - 11:00 AM</option>
+                <option>11:00 AM - 2:00 PM</option>
+                <option>2:00 PM - 5:00 PM</option>
+                <option>First Available</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMethod">Preferred Contact</label>
+
+              <select id="contactMethod">
                 <option>Call Me</option>
                 <option>Text Me</option>
                 <option>Email Me</option>
@@ -649,33 +692,25 @@
             </div>
 
             <div class="form-group full">
-              <label for="address">Service Address</label>
-
-              <input
-                type="text"
-                id="address"
-                placeholder="Street address, city, ZIP"
-              />
-            </div>
-
-            <div class="form-group full">
-              <label for="message">What's Going On?</label>
+              <label for="message">Describe the Problem</label>
 
               <textarea
                 id="message"
-                placeholder="Example: The AC is running but the house is not cooling. The thermostat is set to 74°F and the indoor temperature is 82°F."
+                placeholder="Example: The AC is running but not cooling. The thermostat is set to 74°F and the house is 82°F."
               ></textarea>
             </div>
 
             <div class="form-group full">
+
               <button type="submit" class="btn btn-primary">
-                Send Service Request
+                Request Appointment
               </button>
 
               <p class="note">
-                This form is currently part of the website mockup.
-                We'll connect it to the business email later.
+                Your requested date and time are not confirmed until
+                Navarro's Heating & Cooling contacts you.
               </p>
+
             </div>
 
           </div>
@@ -689,16 +724,16 @@
 
         <div class="hours-copy">
 
-          <span>Availability</span>
+          <span>Scheduling</span>
 
           <h2>
-            Need Help With Your HVAC System?
+            How Appointment Requests Work
           </h2>
 
           <p>
-            For the fastest response, call Navarro's directly.
-            We'll update the exact business hours and emergency
-            service availability before the website goes live.
+            Choose the day and time window that works best for you.
+            Navarro's will review the request and contact you to confirm
+            availability before the appointment is finalized.
           </p>
 
         </div>
@@ -706,22 +741,22 @@
         <div class="hours-card">
 
           <div class="hours-row">
-            <strong>Monday – Friday</strong>
-            <span>Hours coming soon</span>
+            <strong>Morning</strong>
+            <span>8:00 AM - 11:00 AM</span>
           </div>
 
           <div class="hours-row">
-            <strong>Saturday</strong>
-            <span>Hours coming soon</span>
+            <strong>Midday</strong>
+            <span>11:00 AM - 2:00 PM</span>
           </div>
 
           <div class="hours-row">
-            <strong>Sunday</strong>
-            <span>Hours coming soon</span>
+            <strong>Afternoon</strong>
+            <span>2:00 PM - 5:00 PM</span>
           </div>
 
           <div class="hours-row">
-            <strong>Emergency Service</strong>
+            <strong>Urgent Service</strong>
             <span>Call for availability</span>
           </div>
 
@@ -734,10 +769,11 @@
       <div class="container cta-inner">
 
         <div>
-          <h2>Prefer to Call?</h2>
+          <h2>Need Service Faster?</h2>
 
           <p>
-            Speak directly with Navarro's Heating & Cooling about your HVAC needs.
+            Call Navarro's Heating & Cooling directly for urgent
+            heating or cooling problems.
           </p>
         </div>
 
@@ -764,14 +800,54 @@
     function handleSubmit(event) {
       event.preventDefault();
 
-      const name = document.getElementById("name").value;
+      const name =
+        document.getElementById("name").value;
+
+      const date =
+        document.getElementById("date").value;
+
+      const appointmentTime =
+        document.getElementById("appointmentTime").value;
+
+      const formattedDate =
+        date
+          ? new Date(date + "T00:00:00").toLocaleDateString(
+              "en-US",
+              {
+                month: "long",
+                day: "numeric",
+                year: "numeric"
+              }
+            )
+          : "";
 
       alert(
         "Thanks " +
         name +
-        "! This form is only a mockup right now. We'll connect it to Navarro's email later."
+        "! Your appointment request for " +
+        formattedDate +
+        " during " +
+        appointmentTime +
+        " has been received. Navarro's will contact you to confirm the appointment."
       );
     }
+
+    const dateInput =
+      document.getElementById("date");
+
+    const today = new Date();
+
+    const year =
+      today.getFullYear();
+
+    const month =
+      String(today.getMonth() + 1).padStart(2, "0");
+
+    const day =
+      String(today.getDate()).padStart(2, "0");
+
+    dateInput.min =
+      `${year}-${month}-${day}`;
   </script>
 
 </body>
