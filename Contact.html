@@ -579,7 +579,29 @@
 
         </div>
 
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/hvacservices@navarrosheatingandcooling.com"
+          method="POST"
+        >
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="New HVAC Service Appointment Request"
+          />
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          />
+
+          <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+          />
 
           <h2>Request an Appointment</h2>
 
@@ -595,6 +617,7 @@
               <input
                 type="text"
                 id="name"
+                name="Customer Name"
                 placeholder="Your name"
                 required
               />
@@ -605,6 +628,7 @@
               <input
                 type="tel"
                 id="phone"
+                name="Phone Number"
                 placeholder="(702) 555-1234"
                 required
               />
@@ -615,6 +639,7 @@
               <input
                 type="email"
                 id="email"
+                name="Email Address"
                 placeholder="you@email.com"
               />
             </div>
@@ -622,7 +647,11 @@
             <div class="form-group">
               <label for="property">Property Type *</label>
 
-              <select id="property" required>
+              <select
+                id="property"
+                name="Property Type"
+                required
+              >
                 <option value="">Choose one</option>
                 <option>Residential</option>
                 <option>Commercial</option>
@@ -637,6 +666,7 @@
               <input
                 type="text"
                 id="address"
+                name="Service Address"
                 placeholder="Street address, city, ZIP"
                 required
               />
@@ -645,7 +675,11 @@
             <div class="form-group">
               <label for="service">Service Needed *</label>
 
-              <select id="service" required>
+              <select
+                id="service"
+                name="Service Needed"
+                required
+              >
                 <option value="">Choose a service</option>
                 <option>AC Repair</option>
                 <option>AC Installation</option>
@@ -665,6 +699,7 @@
               <input
                 type="date"
                 id="date"
+                name="Preferred Date"
                 required
               />
             </div>
@@ -672,7 +707,11 @@
             <div class="form-group">
               <label for="appointmentTime">Preferred Time *</label>
 
-              <select id="appointmentTime" required>
+              <select
+                id="appointmentTime"
+                name="Preferred Time"
+                required
+              >
                 <option value="">Choose a time window</option>
                 <option>8:00 AM - 11:00 AM</option>
                 <option>11:00 AM - 2:00 PM</option>
@@ -684,7 +723,10 @@
             <div class="form-group">
               <label for="contactMethod">Preferred Contact</label>
 
-              <select id="contactMethod">
+              <select
+                id="contactMethod"
+                name="Preferred Contact Method"
+              >
                 <option>Call Me</option>
                 <option>Text Me</option>
                 <option>Email Me</option>
@@ -696,6 +738,7 @@
 
               <textarea
                 id="message"
+                name="Problem Description"
                 placeholder="Example: The AC is running but not cooling. The thermostat is set to 74°F and the house is 82°F."
               ></textarea>
             </div>
@@ -797,57 +840,14 @@
   </a>
 
   <script>
-    function handleSubmit(event) {
-      event.preventDefault();
-
-      const name =
-        document.getElementById("name").value;
-
-      const date =
-        document.getElementById("date").value;
-
-      const appointmentTime =
-        document.getElementById("appointmentTime").value;
-
-      const formattedDate =
-        date
-          ? new Date(date + "T00:00:00").toLocaleDateString(
-              "en-US",
-              {
-                month: "long",
-                day: "numeric",
-                year: "numeric"
-              }
-            )
-          : "";
-
-      alert(
-        "Thanks " +
-        name +
-        "! Your appointment request for " +
-        formattedDate +
-        " during " +
-        appointmentTime +
-        " has been received. Navarro's will contact you to confirm the appointment."
-      );
-    }
-
-    const dateInput =
-      document.getElementById("date");
+    const dateInput = document.getElementById("date");
 
     const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
 
-    const year =
-      today.getFullYear();
-
-    const month =
-      String(today.getMonth() + 1).padStart(2, "0");
-
-    const day =
-      String(today.getDate()).padStart(2, "0");
-
-    dateInput.min =
-      `${year}-${month}-${day}`;
+    dateInput.min = `${year}-${month}-${day}`;
   </script>
 
 </body>
